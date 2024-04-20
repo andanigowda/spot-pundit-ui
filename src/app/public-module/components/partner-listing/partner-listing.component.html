@@ -1,0 +1,113 @@
+<div class="user-login-container">
+    <form [formGroup]="loginForm" (submit)="onVendorLoginSubmit(loginForm)">
+        <h3>Partner/Collaborate with US</h3>
+
+        <div class="partner-list">
+            <div class="partner-list__section">
+                <div class="partner-list__section--img">
+                    <a href="https://tripexplorer.com/" target="_blank"> <img
+              [src]="'assets/img/partner-listing/partner-listing-logo.png'" alt="" /></a>
+                </div>
+
+                <div class="partner-list__section--img">
+                    <a href="http://www.actofhumanity.org/" target="_blank"> <img
+              [src]="'assets/img/partner-listing/act-humaa.jpeg'" alt="" /></a>
+                </div>
+
+                <div class="partner-list__section--img">
+                    <a href="https://shemarooent.com/" target="_blank"> <img
+              [src]="'assets/img/Shemaroo-Entertainment-Limited-Logo.jpeg'" alt="" /></a>
+                </div>
+
+                <div class="partner-list__section--img">
+                    <a href="https://shemaroobhakti.com/" target="_blank"> <img
+              [src]="'assets/img/bhakti.jpeg'" alt="" /></a>
+                </div>
+
+                <div class="partner-list__section--img">
+                    <a href="https://www.deewanbanquet.com/" target="_blank"> <img
+              [src]="'assets/img/partner-listing/deewanbanquet.png'" alt="" /></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row white-box">
+            <div class="col-md-4">
+                <label>Company Name</label>
+                <mat-form-field appearance="outline">
+                    <!-- <mat-label>Email</mat-label> -->
+                    <input type="text" formControlName="company_name" matInput placeholder="Enter Company Name" required />
+                    <mat-error *ngIf="
+              formControls['company_name'].touched &&
+              formControls['company_name'].hasError('required')
+            ">
+                        Company name is required.</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4">
+                <label>Website Address</label>
+                <mat-form-field appearance="outline">
+                    <!-- <mat-label>Password</mat-label> -->
+                    <input type="text" formControlName="website" matInput placeholder="Enter Website Address" required />
+                    <mat-error *ngIf="
+              formControls['website'].touched &&
+              formControls['website'].hasError('required')
+            ">
+                        Web address is required.</mat-error>
+                    <mat-error *ngIf="patternValidation(formControls['website'])">Enter valid web address</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-4">
+                <label>Email Address</label>
+                <mat-form-field appearance="outline">
+                    <!-- <mat-label>Password</mat-label> -->
+                    <input type="text" formControlName="email" matInput placeholder="Enter Email Address" required />
+                    <mat-error *ngIf="requiredValidation(formControls['email'])">Email is required</mat-error>
+                    <mat-error *ngIf="patternValidation(formControls['email'])">Enter valid email address</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <label>Phone No.</label>
+                <mat-form-field appearance="outline">
+                    <!-- <mat-label>Password</mat-label> -->
+                    <input type="text" formControlName="mobile_number" maxlength="12" (keypress)="keyPress($event)" matInput placeholder="Enter Phone No." required />
+                    <mat-error *ngIf="requiredValidation(formControls['mobile_number'])">Phone number is required</mat-error>
+                    <mat-error *ngIf="patternValidation(formControls['mobile_number'])">Enter valid phone number</mat-error>
+                    <mat-error *ngIf="lengthValidation(formControls['mobile_number'])">Phone number should be 9 to 12 digits</mat-error>
+
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <label>Attach Company Logo</label>
+                <div class="MT-10">
+                    <input type="file" accept="image/*" (change)="onUploadIdProof($event)" />
+                    <mat-error *ngIf="fileErrorMessage">{{fileErrorMessage}}</mat-error>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <label>Why you want to collaborate with FP?</label>
+                <mat-form-field appearance="outline">
+                    <!-- <mat-label>Password</mat-label> -->
+                    <textarea type="text" formControlName="message" matInput placeholder="Enter Why you want to collaborate with FP" required></textarea>
+                    <mat-error *ngIf="
+              formControls['message'].touched &&
+              formControls['message'].hasError('required')
+            ">
+                        Message is required.</mat-error>
+                    <mat-error *ngIf="lengthValidation(formControls['message'])">Message length should be 1 to 256 characters.</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-12 MB-10 text-center">
+                <button type="submit" [disabled]="!loginForm.valid" mat-raised-button class="black-btn" color="primary">
+          SUBMIT
+        </button>
+            </div>
+        </div>
+    </form>
+</div>

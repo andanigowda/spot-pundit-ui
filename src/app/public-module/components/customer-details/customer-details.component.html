@@ -1,0 +1,39 @@
+<div class="customer-details-container">
+    <div class="header">
+        <h1>Customer Details</h1>
+    </div>
+    <div class="customer-details-page">
+        <div class="customer-details">
+
+            <div class="customer-details__content">
+                <div class="customer-details__content--row">
+                    <label>First Name</label>
+                    <span>{{
+                        panditDetails?.first_name ? panditDetails?.first_name : "-"
+                        }}</span>
+                </div>
+
+                <div class="customer-details__content--row">
+                    <label>Last Name</label>
+                    <span>{{
+                        panditDetails?.last_name ? panditDetails?.last_name : "-"
+                        }}</span>
+                </div>
+
+                <div class="customer-details__content--row">
+                    <label>Email address</label>
+                    <span>{{
+                        panditDetails?.email_address ? panditDetails?.email_address : "-"
+                        }}</span>
+                </div>
+
+                <div class="customer-details__content--row">
+                    <label>Phone Number</label>
+                    <span>{{
+                        panditDetails?.phone_number ? panditDetails?.phone_number : "-"
+                        }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="god-details-container">
+    <div class="header">
+        <h1>Temple Details</h1>
+    </div>
+
+    <div class="god-details">
+        <div>
+            <div class="god-content">
+                <div class="image-section" *ngIf="templeDetails?.temple_image">
+                    <img *ngIf="templeDetails?.temple_image" [src]="templeDetails?.temple_image" />
+                </div>
+
+                <div class="god-content--body">
+                    <div class="row">
+                        <div class="col-md-12" *ngIf="templeDetails?.name">
+                            <label>Name:</label>
+                            <span>{{templeDetails?.name}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="templeDetails?.email">
+                            <label>Email:</label>
+                            <span>{{templeDetails?.email}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="templeDetails?.templeaddress">
+                            <label>Address:</label>
+                            <span>{{templeDetails?.templeaddress}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="templeDetails?.templestate">
+                            <label>State:</label>
+                            <span>{{templeDetails?.templestate}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="templeDetails?.country">
+                            <label>Country:</label>
+                            <span>{{templeDetails?.country}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="templeDetails?.templecity">
+                            <label>City:</label>
+                            <span>{{templeDetails?.templecity}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="templeDetails?.templezip">
+                            <label>Zipcode:</label>
+                            <span>{{templeDetails?.templezip}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

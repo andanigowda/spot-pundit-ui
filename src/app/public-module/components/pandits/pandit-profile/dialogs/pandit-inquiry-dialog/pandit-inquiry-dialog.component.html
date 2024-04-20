@@ -1,0 +1,69 @@
+<div class="row">
+    <h2 class="col-md-12" mat-dialog-title>Pandit Inquiry</h2>
+    <a class="close-icon" mat-dialog-close>
+    <i class="fa fa-close"></i>
+  </a>
+</div>
+<form [formGroup]="panditInquiryForm" (submit)="onSubmitPanditInquiryForm(panditInquiryForm)">
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="col-md-6">
+                <mat-label>First Name</mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter First Name" formControlName="first_name" required/>
+                    <mat-error *ngIf="isRequiredField(controls['first_name'])">First name is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <mat-label>Last Name</mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter Last Name" formControlName="last_name" required/>
+                    <mat-error *ngIf="isRequiredField(controls['last_name'])">Last name is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <mat-label>Phone #</mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter Phone Number" formControlName="phone_number" required/>
+                    <mat-error *ngIf="isRequiredField(controls['phone_number'])">Phone number is required</mat-error>
+                    <mat-error *ngIf="isValidField(controls['phone_number'])">Please enter valid phone number</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <mat-label>Email</mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter Email" formControlName="email_address" required/>
+                    <mat-error *ngIf="isRequiredField(controls['email_address'])">Email is required</mat-error>
+                    <mat-error *ngIf="isValidField(controls['email_address'])">Please enter valid email</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <mat-label>Language Spoken</mat-label>
+                <mat-form-field appearance="outline">
+                    <mat-select placeholder="Select Language Spoken" formControlName="language_id" required>
+                        <mat-option *ngFor="let language of languageList" [value]="language.id">{{language?.name}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="isRequiredField(controls['language_id'])">Language is required</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+                <mat-checkbox required>I agree to <a target="_blank" href="assets/documents/termsofUse.pdf">Terms and Conditions</a>
+                </mat-checkbox>
+            </div>
+
+        </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="center">
+        <div class="row">
+            <div class="col-md-12">
+                <button mat-raised-button class="black-btn" color="primary" [disabled]="panditInquiryForm.invalid">Submit Request</button>
+            </div>
+        </div>
+    </mat-dialog-actions>
+</form>

@@ -1,0 +1,259 @@
+<div class="about-us-page-container">
+    <div class="about-us">
+        <div class="header">
+            <h1>Application form</h1>
+        </div>
+    </div>
+    <form [formGroup]="applicationForm" (submit)="onSubmitContactsForm(applicationForm)">
+        <div class="application-form">
+            <div class="form-1">
+                <div class="col-md-6">
+                    <label>First Name<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="first_name" matInput placeholder="Enter first name" required />
+                        <mat-error *ngIf="requiredValidation(formControls['first_name'])">First name is required.</mat-error>
+                        <mat-error *ngIf="lengthValidation(formControls['first_name'])">First name must be of 30 characters
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Last Name<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="last_name" matInput placeholder="Enter last name" required />
+                        <mat-error *ngIf="requiredValidation(formControls['last_name'])">Last name is required.</mat-error>
+                        <mat-error *ngIf="lengthValidation(formControls['last_name'])">Last name must be of 30 characters
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Date of birth<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <input matInput formControlName="dob" [max]="minAge" placeholder="Choose Date of Birth" [matDatepicker]="picker" />
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="requiredValidation(formControls['dob'])">DoB is required.</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Gender<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="gender" placeholder="Choose Gender" required>
+                            <mat-option value="Male">Male</mat-option>
+                            <mat-option value="Female">Female</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="requiredValidation(formControls['gender'])">Select Gender</mat-error>
+                        <mat-error *ngIf="lengthValidation(formControls['gender'])">Gender must be of 10 characters
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Service offered<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="service_name" matInput placeholder="Enter Service Offered" required />
+                        <mat-error *ngIf="requiredValidation(formControls['service_name'])">Services are required.</mat-error>
+                        <mat-error *ngIf="lengthValidation(formControls['service_name'])">Services must be 250 characters
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Occupation<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="occupation" matInput placeholder="Enter Occupation" required />
+                        <mat-error *ngIf="requiredValidation(formControls['occupation'])">Occupation is required.</mat-error>
+                        <mat-error *ngIf="lengthValidation(formControls['occupation'])">Occupation must be 30 characters
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Phone No<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="phone_number" matInput placeholder="Enter phone number" required />
+                        <mat-error *ngIf="requiredValidation(formControls['phone_number'])">Mobile number is required.</mat-error>
+                        <mat-error *ngIf="patternValidation(formControls['phone_number'])">Enter valid phone number</mat-error>
+                        <mat-error *ngIf="lengthValidation(formControls['phone_number'])">Phone number should be 9 to 12 digits
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Email<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="email" matInput placeholder="Enter email" required />
+                        <mat-error *ngIf="requiredValidation(formControls['email'])">Email is required.</mat-error>
+                        <mat-error *ngIf="patternValidation(formControls['email'])">Enter valid email address</mat-error>
+                        <mat-error *ngIf="lengthValidation(formControls['email'])">Email must be of 75 characters
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Address1<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="address" matInput placeholder="Enter Address" required />
+                        <mat-error *ngIf="requiredValidation(formControls['address'])">Address is required.</mat-error>
+                        <mat-error *ngIf="lengthValidation(formControls['address'])">Address must be of 50 characters
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Address2</label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="address2" matInput placeholder="Enter Address" />
+                        <mat-error *ngIf="lengthValidation(formControls['address2'])">Address must be of 50 characters
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Country<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="country" placeholder="Select Country" (selectionChange)="getStateList($event)" required>
+                            <mat-option *ngFor="let row of countryList" [value]="row.short_name">{{row.name}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="requiredValidation(formControls['country'])">Country is required.</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>State/Province<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="state" placeholder="Select State" (selectionChange)="getCityList($event)" required>
+                            <mat-option *ngFor="let row of stateList" [value]="row.state">{{row.state}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="requiredValidation(formControls['state'])">State is required.</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>City<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="city" placeholder="Select City" (selectionChange)="getZipList($event)" required>
+                            <mat-option *ngFor="let row of cityList" [value]="row.city">{{row.city}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="requiredValidation(formControls['city'])">City is required.</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Post Code<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="zipcode" placeholder="Select Zipcode" required>
+                            <mat-option *ngFor="let row of zipList" [value]="row.zipCode">{{row.zipCode}}</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="requiredValidation(formControls['zipcode'])">Zipcode is required.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-6">
+                    <label>Are you affiliated with any institute?<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <mat-select formControlName="instituteAff" placeholder="Choose Your option" required>
+                            <mat-option value="True">Yes</mat-option>
+                            <mat-option value="False">No</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="requiredValidation(formControls['instituteAff'])">Selection is required.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-6">
+                    <label>Name of the institute you are affiliated with</label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="name" matInput placeholder="Enter Name" [required]="formControls['instituteAff'].value == 'True'" />
+                        <mat-error *ngIf="lengthValidation(formControls['name'])">Institute name must be 100 characters
+                        </mat-error>
+                        <mat-error *ngIf="requiredValidation(formControls['name'])">Institute name is required.</mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="hr-line"></div>
+            <div class="form-2">
+                <div class="col-md-12 MT-10">
+                    <label>Please describe why you would be feasible candidate to be featured on our show<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <textarea rows="5" formControlName="description" matInput placeholder="Enter description" required></textarea>
+                        <mat-error *ngIf="requiredValidation(formControls['description'])">Description is required.</mat-error>
+                        <mat-error *ngIf="lengthValidation(formControls['description'])">Description must be of 500 characters
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="form-3">
+                <div class="col-md-6">
+                    <label>Languages Spoken<span
+             class="required-class"> *</span></label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="languages" matInput placeholder="Enter Languages" required />
+                        <mat-error *ngIf="requiredValidation(formControls['languages'])">Languages are required.</mat-error>
+                        <mat-error *ngIf="lengthValidation(formControls['languages'])">Languages must be of 100 characters
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Please Enter your Facebook handle</label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" class="facebook-icon" formControlName="facebook" matInput placeholder="Enter Facebook Handle" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Please Enter your Instagram handle</label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" class="instagram-icon" formControlName="instagram" matInput placeholder="Enter Instagram Handle" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Please Enter your Youtube handle</label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" class="youtube-icon" formControlName="youtube" matInput placeholder="Enter Youtube Handle" />
+                    </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                    <label>Upload picture here<span
+             class="required-class"> *</span></label>
+                    <div></div>
+                    <input type="file" required id="userImage" class="upload-image" accept="image/*" (change)="onUploadImage($event)" placeholder="Choose File" />
+                </div>
+            </div>
+            <div class="hr-line"></div>
+            <div class="form-4">
+                <div class="form-group-alt">
+                    <mat-checkbox color="warn" class="example-margin" formControlName="checkAge">You are aged 21 or over.</mat-checkbox>
+                </div>
+                <div class="form-group-alt">
+                    <mat-checkbox color="warn" class="example-margin" formControlName="checkID">Your identity is true (i.e. you are who you say you are)
+                    </mat-checkbox>
+                </div>
+                <div class="form-group-alt">
+                    <mat-checkbox color="warn" class="example-margin" formControlName="checkTnC">You have read and agreed to the Terms of Use of the Program.
+                    </mat-checkbox>
+                </div>
+                <div class="form-group-alt">
+                    <mat-checkbox color="warn" class="example-margin" formControlName="checkConsent">You consent to Shemaroo/Find A Pandit processing any sensitive personal data that you have provided in your application or as part of the application process, as set out in ourPrivacy Notice.<span class="text-primary">*Please
+              note to take part in some of our Programs, we will
+              need to process the sensitive personal data you provide to us</span></mat-checkbox>
+                </div>
+                <div class="form-info">
+                    <p>For more information on how we may use or share your personal data, please read our Privacy Notice. All photos and any other materials submitted to producer ("Materials") become the sole and exclusive property of producer and cannot
+                        be returned at any time. By submitting Materials, you agree producer may, but is not obligated to, use the Materials in connection with the show, in any way, in any medium, worldwide, in perpetuity. Further, you warrant all Materials
+                        are 100% original and do not violate the right of privacy or publicity of, or constitute a defamation against, any person or entity; that the Materials will not infringe upon or violate the copyright or common law rights or any
+                        other rights of any person or entity; and that there are and will be no encumbrances, liens, conditions or restrictions whatsoever upon or affecting such Materials. You agree to indemnify producer and broadcaster for all damages
+                        and expenses (including reasonable attorney's fees) arising out of any breach or failure of the warranties made herein.
+                    </p>
+                </div>
+                <div class="submit">
+                    <button type="submit" mat-raised-button class="black-btn" [disabled]="!applicationForm.valid || validateCheckbox()" color="primary">
+            SUBMIT
+          </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,184 @@
+<div class="landing-page-container">
+    <div class="landing-page">
+        <div class="landing-page__header">
+            <h2>
+                Welcome to the First Global <br /> Online Pandit Network
+            </h2>
+
+            <form class="flter-form" [formGroup]="filterForm" (submit)="onSearchFilter(filterForm)">
+                <div class="row">
+                    <div class="col-md-5 col-sm-5">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Search Type</mat-label>
+                            <mat-select formControlName="type" required>
+                                <mat-option value="temple">Temple</mat-option>
+                                <mat-option value="pandit">Pandit</mat-option>
+                                <mat-option value="florist">Florist</mat-option>
+                                <mat-option value="crematorium">Crematorium</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-7 col-sm-7">
+                        <mat-form-field>
+                            <mat-label>Zip Code</mat-label>
+                            <input type="text" matInput formControlName="zip" required [matAutocomplete]="autoGroup">
+                            <mat-autocomplete #autoGroup="matAutocomplete">
+                                <mat-option *ngFor="let zipcode of zipcodeList" [value]="zipcode.text">
+                                    {{zipcode.text}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- <div class="col-md-7 col-sm-7">
+            <mat-form-field appearance="legacy">
+              <mat-label>Zip Code</mat-label>
+              <input
+                autocomplete="off"
+                formControlName="zip"
+                matInput
+                type="text"
+                placeholder="Search Zip Code"
+                required
+              />
+              <mat-error
+                *ngIf="
+                  formControls['zip'].touched &&
+                  formControls['zip'].hasError('required')
+                "
+              >
+                Zipcode is required.</mat-error
+              >
+              <mat-error
+                *ngIf="
+                  formControls['zip'].touched &&
+                  formControls['zip'].hasError('maxlength')
+                "
+              >
+                Zipcode should be restricted to 5 digits.</mat-error
+              >
+              <mat-error
+                *ngIf="
+                  formControls['zip'].touched &&
+                  formControls['zip'].hasError('pattern')
+                "
+              >
+                Zipcode allowed numeric only.</mat-error
+              >
+            </mat-form-field>
+          </div> -->
+
+                    <div class="search-btn">
+                        <button type="submit" class="black-btn" color="primary" [disabled]="filterForm.invalid">
+              <i class="fa fa-search"></i>
+            </button>
+                    </div>
+                </div>
+            </form>
+
+            <h3>Find a Pandit Near You</h3>
+
+            <span class="audio-btn">
+        <audio controls autoplay hidden loop allow="autoplay" #audio>
+          <source src="assets/audio/audio.mpeg" type="audio/mpeg" />
+        </audio>
+
+        <a (click)="audio.play()" *ngIf="audio.paused">
+          <mat-icon svgIcon="play"></mat-icon>
+        </a>
+
+        <a (click)="audio.pause()" *ngIf="!audio.paused">
+          <mat-icon svgIcon="pause"></mat-icon>
+        </a>
+      </span>
+
+        </div>
+
+        <div class="landing-page__body">
+            <div class="landing-page__body--menu">
+                <a [routerLink]="templeUrl" class="landing-page__body--menu--list">
+          <img src="assets/img/home/img/temple.png" alt="" />
+          <span>Temples</span>
+        </a>
+
+                <a [routerLink]="godsUrl" class="landing-page__body--menu--list">
+          <img src="assets/img/home/img/god.png" alt="" />
+          <span>Gods</span>
+        </a>
+
+                <a [routerLink]="pujaSamgriUrl" class="landing-page__body--menu--list">
+          <img src="assets/img/home/img/puja-samgri.png" alt="" />
+          <span>Puja Samagri</span>
+        </a>
+
+                <a [routerLink]="prayersUrl" class="landing-page__body--menu--list">
+          <img src="assets/img/home/img/prayers-chants.png" alt="" />
+          <span>Prayers/Chants</span>
+        </a>
+
+                <a [routerLink]="hinduUrl" class="landing-page__body--menu--list">
+          <img src="assets/img/home/img/hindu-scriptures.png" alt="" />
+          <span>Hindu Scriptures</span>
+        </a>
+
+                <a [routerLink]="pujaRecepesUrl" class="landing-page__body--menu--list">
+          <img src="assets/img/home/img/puja-recipes.png" alt="" />
+          <span>Puja Recipes</span>
+        </a>
+            </div>
+
+            <div class="landing-page__body--how-it-work">
+                <h2>How it Works</h2>
+
+                <div class="landing-page__body--how-it-work--list">
+                    <div class="how-it-work-section">
+                        <div class="how-it-work-section__left">
+                            <img src="assets/img/home/find-a-pandit.png" alt="" />
+                        </div>
+
+                        <div class="how-it-work-section__right">
+                            <h4>Find a Pandit</h4>
+                            <p>
+                                Find a Pandit sitting at the comfort of your home. Enjoy a hastle-free experience finding the right pandit for your next occasion. Simply enter your zip code and find a pandit for your next wedding, housewarming, child naming ceremony, etc.
+                            </p>
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="how-it-work-section">
+                        <div class="how-it-work-section__left">
+                            <h4>View Pandit Profile</h4>
+                            <p>
+                                Upon clicking search, you will be presented with a list of Pandits in your local area. You can click on the Pandits profile, review, and select the one that suits your needs.
+                            </p>
+                        </div>
+
+                        <div class="how-it-work-section__right">
+                            <img src="assets/img/home/view-pandit-profile.png" alt="" />
+                            <span></span>
+                        </div>
+                    </div>
+
+                    <div class="how-it-work-section">
+                        <div class="how-it-work-section__left">
+                            <img src="assets/img/home/schedule-your-puja.png" alt="" />
+                        </div>
+
+                        <div class="how-it-work-section__right">
+                            <h4>Schedule Your Puja</h4>
+                            <p>
+                                Once you find a pandit you like, simply click on “Schedule a Puja”, enter all the necessary information and click submit. The pandit will be notified of your request and reach out to you.
+                            </p>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="landing-page__body--testimonial" *ngIf="false">
+                <app-landing-testimonial></app-landing-testimonial>
+            </div>
+        </div>
+    </div>
+</div>

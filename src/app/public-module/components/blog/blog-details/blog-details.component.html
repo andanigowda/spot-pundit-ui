@@ -1,0 +1,43 @@
+<div class="god-details-container">
+    <div class="header">
+        <h1>{{data?.name}}</h1>
+    </div>
+
+    <div class="god-details">
+        <div class="back-to-list">
+            <a (click)="backToList()"><i class="fa fa-angle-double-left"></i> Back</a>
+        </div>
+        <div>
+            <div class="god-content">
+                <div class="image-section">
+                    <img *ngIf="data?.featured_image" [src]="data?.featured_image" alt="" />
+                </div>
+
+                <div class="god-content--body">
+                    <div>
+                        <p [innerHTML]="descriptionRender(data?.description)"></p>
+                    </div>
+                </div>
+
+                <div>
+                    <ul class="social-icons">
+                        <li>
+                            <h5>Share:</h5>
+                        </li>
+                        <li>
+                            <a matTooltip="Facebook" (click)="fb($event, data)">
+                <i class="fa fa-facebook"></i> <span>Facebook</span>
+              </a>
+                        </li>
+
+                        <li>
+                            <a matTooltip="Twitter" class="twitter" (click)="createNavigationUrl('twitter', data);share()">
+                <i class="fa fa-twitter"></i> <span>Twitter</span>
+              </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

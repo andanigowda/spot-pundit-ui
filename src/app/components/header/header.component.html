@@ -1,0 +1,283 @@
+<div class="public-header-container">
+    <div class="header-section" [ngClass]="{ 'header-white1': headerfix }">
+        <div class="header-section__logo">
+            <ul>
+                <li>
+                    <span (click)="onToggleMenu()" class="close-icons" class="mobile-view menu-icon">
+            <img src="assets/img/menu.png" width="25" alt="" />
+          </span>
+                    <a [routerLink]="homeUrl" routerLinkActive="active">
+            <img [@fade]="state" (@fade.done)="onDone($event)" [src]="
+                headerfix
+                  ? 'assets/img/whitelogonew.png'
+                  : 'assets/img/logo.png'
+              " alt="" />
+          </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="header-section__menu" *ngIf="isMobileView">
+            <ul>
+                <li class="mobile-view">
+                    <span (click)="onToggleMenu()" class="close-icons">
+            <img src="assets/img/close.svg" width="30" alt="" />
+          </span>
+                    <a [routerLink]="homeUrl" routerLinkActive="active">
+            <img [src]="
+                headerfix
+                  ? 'assets/img/whitelogonew.png'
+                  : 'assets/img/logo.png'
+              " width="200" alt="" />
+          </a>
+                </li>
+
+                <li>
+                    <a (click)="onToggleMenu()" [routerLink]="homeUrl">HOME</a>
+                </li>
+
+                <li>
+                    <a [matMenuTriggerFor]="knowledge">KNOWLEDGE</a>
+                    <mat-menu #knowledge="matMenu">
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="godUrl" routerLinkActive="active">Gods</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="hinduGlossery" routerLinkActive="active">Hindu
+              Glossery</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="hinduScriptures" routerLinkActive="active">Hindu
+              Scriptures</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="prayersUrl" routerLinkActive="active">Prayers/Chants</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="pujaUrl" routerLinkActive="active">Puja</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="pujaRecipes" routerLinkActive="active">Puja
+              Recipes</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="pujaSamgri" routerLinkActive="active">Puja
+              Samagri</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="samskaraUrl" routerLinkActive="active">Samskara</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="templeUrl" routerLinkActive="active">Temples</a>
+                    </mat-menu>
+                </li>
+
+                <li>
+                    <a [matMenuTriggerFor]="events1">EVENTS</a>
+                    <mat-menu #events1="matMenu">
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="announcementUrl" routerLinkActive="active">Announcement</a>
+                        <!-- <a mat-menu-item (click)="onToggleMenu()" [routerLink]="eligibilityUrl"
+              routerLinkActive="active">Eligibility</a>
+            <a mat-menu-item (click)="onToggleMenu()" [routerLink]="applicationUrl"
+              routerLinkActive="active">Application</a>
+            <a mat-menu-item (click)="onToggleMenu()" [routerLink]="applicationFormUrl"
+              routerLinkActive="active">Application Form</a> -->
+                    </mat-menu>
+                </li>
+
+                <li>
+                    <a (click)="onToggleMenu()" [routerLink]="calenderUrl" routerLinkActive="active">CALENDAR</a>
+                </li>
+
+                <li>
+                    <a (click)="onToggleMenu()" [routerLink]="panchangUrl" routerLinkActive="active">PANCHANG</a>
+                </li>
+
+                <li>
+                    <a (click)="onToggleMenu()" [routerLink]="shemarooStoreUrl" routerLinkActive="active">STORE</a>
+                </li>
+
+                <li>
+                    <a [matMenuTriggerFor]="services">SERVICES</a>
+                    <mat-menu #services="matMenu">
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="yogaUrl" routerLinkActive="active">Yoga</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="vaastuUrl" routerLinkActive="active">Vastu
+              Shastra</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="tarrotUrl" routerLinkActive="active">Tarot Card</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="meditationUrl" routerLinkActive="active">Meditation</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="palmUrl" routerLinkActive="active">Palmistry</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="numerologyUrl" routerLinkActive="active">Numerology</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="astrologuUrl" routerLinkActive="active">Astrology</a>
+                    </mat-menu>
+                </li>
+
+                <li>
+                    <a (click)="onToggleMenu()" [routerLink]="blogsUrl" routerLinkActive="active">BLOG</a>
+                </li>
+
+                <li>
+                    <a [matMenuTriggerFor]="responsiveLoginMenu">Login / Sign up</a>
+                </li>
+
+                <mat-menu #responsiveLoginMenu="matMenu">
+                    <a (click)="onToggleMenu()" [routerLink]="panditLoginUrl" routerLinkActive="active" mat-menu-item>Pandit
+            Login</a>
+                    <a (click)="onToggleMenu()" [routerLink]="userLoginUrl" routerLinkActive="active" mat-menu-item>User Login</a>
+                    <a (click)="onToggleMenu()" [routerLink]="floristLoginUrl" routerLinkActive="active" mat-menu-item>Florist
+            Login</a>
+                    <a (click)="onToggleMenu()" [routerLink]="crematoriumLoginUrl" routerLinkActive="active" mat-menu-item>Crematorium Login</a>
+                </mat-menu>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="landig-header-container">
+    <div class="landig-header">
+        <div class="landig-header__top">
+            <div>
+                <a href="mailto:info@findapandit.com">
+          <i class="fa fa-envelope-o"></i>:
+          <span>info@findapandit.com</span>
+        </a>
+            </div>
+
+            <div>
+                <a [routerLink]="homeUrl" routerLinkActive="active">
+          <img src="assets/img/logo.png" width="200" alt="" />
+        </a>
+            </div>
+
+            <div>
+                <ul>
+                    <li *ngIf="!loginStatus">
+                        <a [matMenuTriggerFor]="loginMenu">
+                            <mat-icon svgIcon="user-icon"></mat-icon>
+                            <span>Login / Sign up</span>
+                        </a>
+
+                        <mat-menu #loginMenu="matMenu">
+                            <a (click)="onToggleMenu()" [routerLink]="templeLoginUrl" routerLinkActive="active" mat-menu-item>Temple
+                Login/Sign up</a>
+                            <a (click)="onToggleMenu()" [routerLink]="panditLoginUrl" routerLinkActive="active" mat-menu-item>Pandit
+                Login/Sign up</a>
+                            <a (click)="onToggleMenu()" [routerLink]="userLoginUrl" routerLinkActive="active" mat-menu-item>User
+                Login/Sign up</a>
+                            <a (click)="onToggleMenu()" [routerLink]="floristLoginUrl" routerLinkActive="active" mat-menu-item>Florist
+                Login/Sign up</a>
+                            <a (click)="onToggleMenu()" [routerLink]="crematoriumLoginUrl" routerLinkActive="active" mat-menu-item>Crematorium Login/Sign up</a>
+                        </mat-menu>
+                    </li>
+
+                    <li class="header-section" *ngIf="loginStatus">
+                        <button (click)="onToggleMenu()" mat-button [matMenuTriggerFor]="menu">
+              <img [src]="userImage ? userImage : 'assets/img/pandit/user-placeholder.jpg'" width="40" alt="" />
+              <span>{{userName ? userName : userDetails?.role}}</span>
+            </button>
+                        <mat-menu #menu="matMenu" class="header-section--list">
+                            <a (click)="profileUrl()" routerLinkActive="active" mat-menu-item> My Profile </a>
+                            <a (click)="changePasswordUrl()" routerLinkActive="active" mat-menu-item>
+                Change Password
+              </a>
+                            <a (click)="logout()" mat-menu-item>Logout</a>
+                        </mat-menu>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="landig-header__menu">
+            <ul>
+                <li>
+                    <a (click)="onToggleMenu()" [routerLink]="homeUrl">HOME</a>
+                </li>
+
+                <li>
+                    <a [matMenuTriggerFor]="knowledge">KNOWLEDGE</a>
+                    <mat-menu #knowledge="matMenu">
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="godUrl" routerLinkActive="active">Gods</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="hinduGlossery" routerLinkActive="active">Hindu
+              Glossery</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="hinduScriptures" routerLinkActive="active">Hindu
+              Scriptures</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="prayersUrl" routerLinkActive="active">Prayers/Chants</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="pujaUrl" routerLinkActive="active">Puja</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="pujaRecipes" routerLinkActive="active">Puja
+              Recipes</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="pujaSamgri" routerLinkActive="active">Puja
+              Samagri</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="samskaraUrl" routerLinkActive="active">Samskara</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="templeUrl" routerLinkActive="active">Temples</a>
+                    </mat-menu>
+                </li>
+
+                <li>
+                    <a [matMenuTriggerFor]="events">EVENTS</a>
+                    <mat-menu #events="matMenu">
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="announcementUrl" routerLinkActive="active">Announcement</a>
+                        <!-- <a mat-menu-item (click)="onToggleMenu()" [routerLink]="eligibilityUrl"
+              routerLinkActive="active">Eligibility</a>
+            <a mat-menu-item (click)="onToggleMenu()" [routerLink]="applicationUrl"
+              routerLinkActive="active">Application</a>
+            <a mat-menu-item (click)="onToggleMenu()" [routerLink]="applicationFormUrl"
+              routerLinkActive="active">Application Form</a> -->
+                    </mat-menu>
+                </li>
+
+                <li>
+                    <a (click)="onToggleMenu()" [routerLink]="calenderUrl" routerLinkActive="active">CALENDAR</a>
+                </li>
+
+                <li>
+                    <a (click)="onToggleMenu()" [routerLink]="panchangUrl" routerLinkActive="active">PANCHANG</a>
+                </li>
+
+                <li>
+                    <a (click)="onToggleMenu()" [routerLink]="shemarooStoreUrl" routerLinkActive="active">STORE</a>
+                </li>
+
+                <li>
+                    <a [matMenuTriggerFor]="services">SERVICES</a>
+                    <mat-menu #services="matMenu">
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="yogaUrl" routerLinkActive="active">Yoga</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="vaastuUrl" routerLinkActive="active">Vastu
+              Shastra</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="tarrotUrl" routerLinkActive="active">Tarot Card</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="meditationUrl" routerLinkActive="active">Meditation</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="palmUrl" routerLinkActive="active">Palmistry</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="numerologyUrl" routerLinkActive="active">Numerology</a>
+                        <a mat-menu-item (click)="onToggleMenu()" [routerLink]="astrologuUrl" routerLinkActive="active">Astrology</a>
+                    </mat-menu>
+                </li>
+
+                <li>
+                    <a (click)="onToggleMenu()" [routerLink]="blogsUrl" routerLinkActive="active">BLOG</a>
+                </li>
+
+                <!-- <li>
+          <a (click)="onToggleMenu()" [routerLink]="aboutusUrl" routerLinkActive="active">ABOUT US</a>
+        </li>
+
+        <li>
+          <a (click)="onToggleMenu()" [routerLink]="endorsersUrl" routerLinkActive="active">ENDORSERS</a>
+        </li>
+
+        <li>
+          <a (click)="onToggleMenu()" [routerLink]="panditUrl" routerLinkActive="active">SAMSKARA</a>
+        </li>
+
+        <li>
+          <a (click)="onToggleMenu()" [routerLink]="pujaUrl" routerLinkActive="active">PUJAS</a>
+        </li>
+
+        <li>
+          <a (click)="onToggleMenu()" [routerLink]="floristUrl" routerLinkActive="active">FLORIST</a>
+        </li>
+
+        <li>
+          <a (click)="onToggleMenu()" [routerLink]="crematoriumUrl" routerLinkActive="active">CREMATORIUM</a>
+        </li>
+
+        <li>
+          <a (click)="onToggleMenu()" [routerLink]="calenderUrl" routerLinkActive="active">CALENDAR</a>
+        </li>
+
+        <li>
+          <a (click)="onToggleMenu()" [routerLink]="shemarooStoreUrl" routerLinkActive="active">STORE</a>
+        </li>
+
+        <li>
+          <a (click)="onToggleMenu()" [routerLink]="blogsUrl" routerLinkActive="active">BLOG</a>
+        </li>
+
+        <li>
+          <a (click)="onToggleMenu()" [routerLink]="contactusUrl" routerLinkActive="active">CONTACT US</a>
+        </li> -->
+
+            </ul>
+        </div>
+    </div>
+</div>

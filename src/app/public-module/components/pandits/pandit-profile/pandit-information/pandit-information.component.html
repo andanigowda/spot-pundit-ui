@@ -1,0 +1,132 @@
+<div class="pandit-information-page">
+    <div class="pandit-information">
+        <div class="pandit-information__top"></div>
+        <div class="pandit-information__pandit-info">
+            <div>
+                <img [src]="panditDetails?.profile_image ? panditDetails?.profile_image : 'assets/img/user_placeholder.png'" width="150" alt="" />
+            </div>
+
+            <div>
+                <!-- <ul *ngIf="panditDetails?.rating">
+                    <li>
+                        <i *ngFor="let item of onGetArray(panditDetails?.rating)" class="fa fa-star"></i>
+                    </li>
+                </ul> -->
+            </div>
+
+            <!-- <div>
+                <a>See all customer reviews</a>
+            </div> -->
+        </div>
+
+        <div class="pandit-information__content">
+            <div class="pandit-information__content--row" *ngIf="panditDetails?.firstName">
+                <label>First Name</label>
+                <span>{{
+                    panditDetails?.firstName ? panditDetails?.firstName : "-"
+                    }}</span>
+            </div>
+
+            <div class="pandit-information__content--row" *ngIf="panditDetails?.lastName">
+                <label>Last Name</label>
+                <span>{{
+                    panditDetails?.lastName ? panditDetails?.lastName : "-"
+                    }}</span>
+            </div>
+
+            <div class="pandit-information__content--row" *ngIf="panditDetails?.zipCode">
+                <label>Zip Code</label>
+                <span>{{
+                    panditDetails?.zipCode ? panditDetails?.zipCode : "-"
+                    }}</span>
+            </div>
+
+            <div class="pandit-information__content--row" *ngIf="panditDetails?.state">
+                <label>State</label>
+                <span>{{
+                    panditDetails?.state ? panditDetails?.state : "-"
+                    }}</span>
+            </div>
+
+            <div class="pandit-information__content--row" *ngIf="panditDetails?.description">
+                <label>Pandit Description</label>
+                <span>
+                  <p [innerHtml]="panditDetails?.description"></p>
+                </span>
+            </div>
+
+            <div class="pandit-information__content--row" *ngIf="panditDetails?.message">
+                <label>Message</label>
+                <span>{{
+                  panditDetails?.message ? panditDetails?.message : "-"
+                  }}</span>
+            </div>
+
+            <div class="pandit-information__content--row" *ngIf="panditDetails?.pujas && panditDetails?.pujas.length">
+                <label>List of Pujas</label>
+                <span>
+                    <ul *ngIf="panditDetails?.pujas && panditDetails?.pujas.length">
+                        <li *ngFor="let puja of panditDetails?.pujas">{{puja}}</li>
+                    </ul>
+                </span>
+            </div>
+
+            <div class="pandit-information__content--row" *ngIf="panditDetails?.willingToTravel">
+                <label>Willing to Travel</label>
+                <span>{{
+                    panditDetails?.willingToTravel ? 'Yes' : "No"
+                    }}</span>
+            </div>
+
+            <div class="pandit-information__content--row" *ngIf="panditDetails?.temple">
+                <label>Temple Name</label>
+                <span>{{
+                    panditDetails?.temple ? panditDetails?.temple : "-"
+                    }}</span>
+            </div>
+
+            <div class="pandit-information__content--row" *ngIf="panditDetails?.language || (panditDetails?.secondaryLanguages && panditDetails?.secondaryLanguages.length)">
+                <label>Languages</label>
+                <span>
+                    <ul>
+                        <li>{{ panditDetails?.language ? panditDetails?.language : "-" }}</li>
+                        <li *ngFor="let secondary of panditDetails?.secondaryLanguages">{{secondary}}</li>
+                    </ul>
+                </span>
+            </div>
+
+            <div class="pandit-information__content--row" *ngIf="panditDetails?.photo_1 || panditDetails?.photo_2 || panditDetails?.photo_3">
+                <label>Image Gallery</label>
+                <span class="pandit-image">
+                    <img *ngIf="panditDetails?.photo_1" [src]="panditDetails?.photo_1" (click)="onOpenImageDialog(panditDetails?.photo_1)" alt="">
+                    <img *ngIf="panditDetails?.photo_2" [src]="panditDetails?.photo_2" (click)="onOpenImageDialog(panditDetails?.photo_2)" alt="">
+                    <img *ngIf="panditDetails?.photo_3" [src]="panditDetails?.photo_3" (click)="onOpenImageDialog(panditDetails?.photo_3)" alt="">
+                </span>
+            </div>
+
+            <div class="pandit-information__content--row" *ngIf="panditDetails?.videos">
+                <label>Video Galley</label>
+                <span class="youtube-link">
+                    <video width="400" controls>
+                        <source [src]="panditDetails?.videos" type="video/mp4">
+                        <source [src]="panditDetails?.videos" type="video/ogg">
+                        Your browser does not support HTML video.
+                      </video>
+                </span>
+            </div>
+
+            <div class="pandit-information__content--row">
+                <label>Covid Message</label>
+                <span>
+                  All covid guidelines are being followed for in person pujas
+                </span>
+            </div>
+
+            <div class="pandit-information__content--button">
+                <button type="submit" class="black-btn" color="primary" (click)="onOpenInquiryDialog()" mat-raised-button>
+                    Contact Pandit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

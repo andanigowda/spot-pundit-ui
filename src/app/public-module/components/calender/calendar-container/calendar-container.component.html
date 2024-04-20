@@ -1,0 +1,49 @@
+<div class="calendar-container-page">
+    <div class="calendar-page">
+        <div class="header">
+            <h1>Calendar</h1>
+
+            <ul>
+                <li>
+                    <a class="pointer-event active">Home </a>
+                </li>
+
+                <li>
+                    <a class="active">
+            <i class="fa fa-angle-double-right"></i>
+          </a>
+                </li>
+
+                <li>
+                    <a>Calendar</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="calendar-page__content"></div>
+
+        <div class="calendar-page__body">
+            <div class="calendar-page__body--tabs">
+                <mat-icon class="left" svgIcon="elephant-left"></mat-icon>
+                <a [ngClass]="{ active: activeView === htmlView.CALENDAR_ONE }" (click)="onChangeYear('2022')">2022</a
+        >
+        <a
+          [ngClass]="{ active: activeView === htmlView.CALENDAR_TWO }"
+          (click)="onChangeYear('2023')"
+          >2023</a
+        >
+        <mat-icon class="right" svgIcon="elephant-right"></mat-icon>
+      </div>
+
+      <div class="calendar-page__body--content">
+        <div *ngIf="activeView === htmlView.CALENDAR_ONE">
+          <app-calendar-one></app-calendar-one>
+        </div>
+
+        <div *ngIf="activeView === htmlView.CALENDAR_TWO">
+          <app-calendar-two></app-calendar-two>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

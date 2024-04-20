@@ -1,0 +1,45 @@
+<div class="puja-samagri-page-container">
+    <div class="puja-samagri">
+        <div class="header">
+            <h1>Puja Samagri</h1>
+
+            <ul>
+                <li>
+                    <a class="pointer-event active">Home </a>
+                </li>
+
+                <li>
+                    <a class="active">
+            <i class="fa fa-angle-double-right"></i>
+          </a>
+                </li>
+
+                <li>
+                    <a>Puja Samagri</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- <p>
+    Puja is a holy ritual carried out to solicit the blessings of Lord Almighty.
+    Pujas are incomplete without using puja supplies or puja samagri. These play
+    a crucial role in making the puja more sanctified. Puja supplies are the
+    basic items required for conducting puja rituals. It is mandatory for the
+    sacred worship of God.
+  </p>
+  <p>
+    The basic components of Puja supplies include turmeric, chandan (sandalwood
+    paste), kumkum, flowers, fruits, water, tulsi leaves, panchamrita, betel
+    leaves and nut, coconut, camphor, rosewater, incense sticks, bronze lamps,
+    and other necessary items like cloth, mirror, and utensils.
+  </p> -->
+
+    <div class="gods-page">
+        <div class="gods-page__section" *ngFor="let item of pujaSamagriList" (click)="onOpenOujaDetails(item)">
+            <img [src]="item?.featured_image ? item?.featured_image : 'assets/img/bg1.jpg'" />
+            <h2>{{ item?.name }}</h2>
+            <p [innerHTML]="item?.description"></p>
+        </div>
+    </div>
+</div>

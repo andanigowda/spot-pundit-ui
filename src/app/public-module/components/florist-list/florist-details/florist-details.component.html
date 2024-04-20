@@ -1,0 +1,163 @@
+<div class="god-details-container">
+    <div class="header">
+        <h1>Florist Details</h1>
+    </div>
+
+    <div class="god-details">
+        <div class="back-to-list">
+            <a (click)="backToList()"><i class="fa fa-angle-double-left"></i> Back</a>
+        </div>
+        <div>
+            <div class="god-content">
+                <div class="image-section">
+                    <img [src]="floristDetails?.logo ? floristDetails?.logo : 'assets/img/placeholder/florist-placeholder.jpeg'" />
+                </div>
+
+                <div class="god-content--body">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-md-12" *ngIf="floristDetails?.name">
+                                <label>Company Name:</label>
+                                <span>{{floristDetails?.name}}</span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.email">
+                                <label>Email:</label>
+                                <span>{{floristDetails?.email}}</span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.mobileNumber">
+                                <label>Mobile Number:</label>
+                                <span>{{floristDetails?.mobileNumber}}</span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.website">
+                                <label>Website:</label>
+                                <span>{{floristDetails?.website}}</span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.address">
+                                <label>Address:</label>
+                                <span>{{floristDetails?.address}}</span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.country">
+                                <label>Country:</label>
+                                <span>{{floristDetails?.country}}</span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.state">
+                                <label>State:</label>
+                                <span>{{floristDetails?.state}}</span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.city">
+                                <label>City:</label>
+                                <span>{{floristDetails?.city}}</span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.zipCode">
+                                <label>Zipcode:</label>
+                                <span>{{floristDetails?.zipCode}}</span>
+                            </div>
+
+
+                            <div class="col-md-12" *ngIf="floristDetails?.description">
+                                <label>Description:</label>
+                                <span>{{floristDetails?.description}}</span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.message">
+                                <label>Message:</label>
+                                <span>{{floristDetails?.message}}</span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.delivery_available">
+                                <label>Available for delivery:</label>
+                                <span style="text-transform:capitalize">{{floristDetails?.delivery_available}}</span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.master_image">
+                                <label>Master Image:</label>
+                                <span>
+                  <img *ngIf="floristDetails?.master_image" src="floristDetails?.master_image" width="100" />
+                </span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.image_1 || floristDetails?.image_2 || floristDetails?.image_3 || floristDetails?.image_4">
+                                <label>Image Gallery:</label>
+                                <span>
+                  <img *ngIf="floristDetails?.image_1" src="floristDetails?.image_1" (click)="onOpenImageDialog(floristDetails?.image_1)" width="100" />
+                  <img *ngIf="floristDetails?.image_2" src="floristDetails?.image_2" (click)="onOpenImageDialog(floristDetails?.image_2)" width="100" />
+                  <img *ngIf="floristDetails?.image_3" src="floristDetails?.image_3" (click)="onOpenImageDialog(floristDetails?.image_3)" width="100" />
+                  <img *ngIf="floristDetails?.image_4" src="floristDetails?.image_4" (click)="onOpenImageDialog(floristDetails?.image_4)" width="100" />
+                </span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.facebook">
+                                <label>Facebook:</label>
+                                <span>
+                  <a *ngIf="floristDetails?.facebook" [href]="floristDetails?.facebook"
+                    target="_blank">{{floristDetails?.facebook}}</a>
+                </span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.instagram">
+                                <label>Instagram:</label>
+                                <span>
+                  <a *ngIf="floristDetails?.instagram" [href]="floristDetails?.instagram"
+                    target="_blank">{{floristDetails?.instagram}}</a>
+                </span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.video_1 || floristDetails?.video_2 ">
+                                <label>Video Gallery:</label>
+                                <span class="MR-10">
+                  <video controls width="250" class="MR-10">
+                    <source type="video/mp4" [src]="floristDetails?.video_1">
+                  </video>
+                  <video controls width="250">
+                    <source type="video/mp4" [src]="floristDetails?.video_2">
+                  </video>
+                </span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.temple">
+                                <label>Temple:</label>
+                                <span>
+                  {{floristDetails?.temple}}
+                </span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.list_of_bouquets">
+                                <label>List of bouquets:</label>
+                                <span>
+                  {{floristDetails?.list_of_bouquets}}
+                </span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.working_hours">
+                                <label>Working hours:</label>
+                                <span>
+                  {{floristDetails?.working_hours}}
+                </span>
+                            </div>
+
+                            <div class="col-md-12" *ngIf="floristDetails?.rating">
+                                <label>Ratings:</label>
+                                <span class="ratings" *ngIf="floristDetails?.rating">
+                  <mat-icon *ngFor="let item of onGetArray(floristDetails?.rating)" svgIcon="star"></mat-icon>
+                </span>
+                            </div>
+
+                            <div class="col-md-12 PR-0" *ngIf="floristDetails?.address">
+                                <iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen [src]="addressRender(floristDetails)">
+                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

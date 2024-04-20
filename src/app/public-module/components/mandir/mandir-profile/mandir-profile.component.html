@@ -1,0 +1,30 @@
+<div class="god-details-container">
+    <div class="header">
+        <h1>{{data?.title}}</h1>
+
+    </div>
+
+    <div class="god-details">
+        <div class="back-to-list">
+            <a (click)="backToList()"><i class="fa fa-angle-double-left"></i> Back</a>
+        </div>
+        <div>
+            <div class="god-content">
+                <div class="image-section" *ngIf="data?.image">
+                    <img *ngIf="data?.image" [src]="'assets/img/temples/' + data?.image" />
+                </div>
+
+                <div class="god-content--body">
+                    <div>
+                        <p [innerHTML]="data?.paragraph"></p>
+                        <p [innerHTML]="data?.paragraph1"></p>
+                        <p [innerHTML]="data?.paragraph2"></p>
+                        <p [innerHTML]="data?.paragraph3"></p>
+                        <p [innerHTML]="data?.paragraph4"></p>
+                        <p [innerHTML]="data?.paragraph5"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

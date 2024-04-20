@@ -1,0 +1,214 @@
+<div class="search-result-page-container">
+    <div class="search-result">
+        <a class="toggle-filter" (click)="onToggleSearchBar()">
+            <mat-icon [svgIcon]="isCollapseSearchBar ? 'next' : 'prev'"></mat-icon>
+        </a>
+        <div class="row">
+            <div class="col-md-3" [ngClass]="{ 'display-none': isCollapseSearchBar }">
+                <form [formGroup]="filterForm" (submit)="onSearchFilter(filterForm)">
+                    <div class="filter-section">
+                        <div class="col-md-12">
+                            <h2 class="search-header">Search</h2>
+                        </div>
+                        <div class="col-md-12">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Search Type</mat-label>
+                                <mat-select formControlName="type">
+                                    <mat-option value="temple">Temple</mat-option>
+                                    <mat-option value="pandit">Pandit</mat-option>
+                                    <mat-option value="florist">Florist</mat-option>
+                                    <mat-option value="crematorium">Crematorium</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-12">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Country</mat-label>
+                                <mat-select formControlName="country" (selectionChange)="getStateList($event.value)">
+                                    <mat-option *ngFor="let country of countryList" [value]="country?.short_name">{{ country?.name }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-12">
+                            <mat-form-field appearance="outline">
+                                <mat-select formControlName="state" (selectionChange)="getCityList($event.value)" placeholder="State" #singleSelect>
+                                    <mat-option>
+                                        <ngx-mat-select-search placeholderLabel="Search state" noEntriesFoundLabel="'no matching state found'" [formControl]="stateFilterCtrl">
+                                        </ngx-mat-select-search>
+                                    </mat-option>
+                                    <mat-option *ngFor="let state of filteredState | async" [value]="state?.state">
+                                        {{ state?.state }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-12">
+                            <mat-form-field appearance="outline">
+                                <mat-select formControlName="city" placeholder="City" #citySingleSelect>
+                                    <mat-option>
+                                        <ngx-mat-select-search placeholderLabel="Search city" noEntriesFoundLabel="'no matching city found'" [formControl]="cityFilterCtrl"></ngx-mat-select-search>
+                                    </mat-option>
+                                    <mat-option *ngFor="let city of filteredCity | async" [value]="city?.city">
+                                        {{ city?.city }}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-12">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Zip Code, City, Temple</mat-label>
+                                <input autocomplete="off" type="text" formControlName="zip" matInput placeholder="Search Zip Code" required/>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="filterForm.get('type').value === 'pandit'">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Puja</mat-label>
+                                <input autocomplete="off" type="text" formControlName="puja" matInput placeholder="Enter puja" />
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="filterForm.get('type').value === 'pandit'">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Language</mat-label>
+                                <mat-select formControlName="language" placeholder="Select language">
+                                    <mat-option *ngFor="let language of languageList" [value]="language?.name"> {{language?.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-12">
+                            <mat-slider thumbLabel [displayWith]="formatLabel" formControlName="radius" tickInterval="200" step="5" min="0" max="200" aria-label="units"></mat-slider>
+                            <div class="mile-container">
+                                <label id="name-label" class="name-label">{{filterForm.value.radius}} Mile</label>
+                                <label class="value-label">200 Miles</label>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-12">
+                            <button type="submit" class="black-btn" color="primary" [disabled]="!filterForm.valid" mat-raised-button>
+                Search
+              </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-9" [ngClass]="{ 'col-md-12': isCollapseSearchBar }">
+                <div>
+                    <h2 class="search-header">{{resultCount ? resultCount : '0'}} {{param?.type}} found for {{param?.zip}}</h2>
+                    <h2 class="search-header" *ngIf="resultObj">{{otherResultCount ? otherResultCount : '0'}} {{param?.type}} within 10 miles of {{param?.zip}}</h2>
+                    <h3>{{paramMessage}}</h3>
+                </div>
+
+                <!-- Temple list -->
+                <div class="search-result-list" *ngIf="searchResultTempleList && searchResultTempleList.length > 0">
+                    <a class="search-result-list--section" *ngFor="let result of searchResultTempleList; let i = index" (click)="onTempleDetailsPage(result)">
+                        <div class="image-section">
+                            <img [src]="result?.temple_image ? result?.temple_image : 'assets/img/user_placeholder.png'" />
+                            <div class="ratings" *ngIf="result?.ratings">
+                                <mat-icon *ngFor="let item of onGetArray(result?.ratings)" svgIcon="star"></mat-icon>
+                                <span>{{result?.ratings}}</span>
+                            </div>
+
+                            <div class="bookmark-section" *ngIf="false">
+                                <a *ngIf="i === 0">
+                                    <mat-icon svgIcon="bookmark"></mat-icon>
+                                </a>
+
+                                <a *ngIf="i !== 0">
+                                    <mat-icon svgIcon="un-bookmark"></mat-icon>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="mandir-name" *ngIf="result?.name">{{result?.name}}</span>
+                        </div>
+                        <p class="text-center">
+                            {{result?.templeaddress}}, {{result?.templestate}}, {{result?.templecity}}, {{result?.templezip}}
+                        </p>
+                    </a>
+                </div>
+
+                <!-- Pandit List -->
+                <div class="search-result-list" *ngIf="searchResultList && searchResultList.length > 0">
+                    <a class="search-result-list--section" *ngFor="let result of searchResultList; let i = index" (click)="onPanditDetailsPage(result)">
+                        <div class="image-section">
+                            <img [src]="result?.profile_image ? result?.profile_image : 'assets/img/user_placeholder.png'" />
+                            <div class="ratings" *ngIf="result?.rating">
+                                <mat-icon *ngFor="let item of onGetArray(result?.rating)" svgIcon="star"></mat-icon>
+                                <span>{{result?.rating}}</span>
+                            </div>
+
+                            <div class="bookmark-section">
+                                <a *ngIf="result?.favourite" (click)="onRemoveFavoriteUser(result, $event)">
+                                    <mat-icon svgIcon="bookmark"></mat-icon>
+                                </a>
+
+                                <a *ngIf="!(result?.favourite)" (click)="onAddFavoriteUser(result, $event)">
+                                    <mat-icon svgIcon="un-bookmark"></mat-icon>
+                                </a>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="mandir-name" *ngIf="result?.firstName">{{result?.firstName + ' ' + result?.lastName}}</span>
+                        </div>
+                        <p [innerHtml]="onDescription(result?.description)"></p>
+                    </a>
+                </div>
+
+                <!-- Cremitorium list -->
+                <div class="search-result-list" *ngIf="crematoriumList && crematoriumList.length > 0">
+                    <a class="search-result-list--section" *ngFor="let result of crematoriumList; let i = index" (click)="onCremitoriumDetailsPage(result)">
+                        <div class="image-section">
+                            <img [src]="result?.logo ? result?.logo : 'assets/img/placeholder/crematorium-placeholder.jpeg'" />
+                            <div class="ratings" *ngIf="result?.ratings">
+                                <mat-icon *ngFor="let item of onGetArray(result?.ratings)" svgIcon="star"></mat-icon>
+                                <span>{{result?.ratings}}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="mandir-name" *ngIf="result?.name">{{result?.name}}</span>
+                        </div>
+                        <p class="text-center">
+                            {{result?.address}}, {{result?.state}}, {{result?.city}}, {{result?.zipCode__zipCode}}
+                        </p>
+                    </a>
+                </div>
+
+                <!-- Florist list -->
+                <div class="search-result-list" *ngIf="floristList && floristList.length > 0">
+                    <a class="search-result-list--section" *ngFor="let result of floristList; let i = index" (click)="onFloristDetailsPage(result)">
+                        <div class="image-section">
+                            <img [src]="result?.logo ? result?.logo : 'assets/img/placeholder/florist-placeholder.jpeg'" />
+                            <div class="ratings" *ngIf="result?.ratings">
+                                <mat-icon *ngFor="let item of onGetArray(result?.ratings)" svgIcon="star"></mat-icon>
+                                <span>{{result?.ratings}}</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span class="mandir-name" *ngIf="result?.name">{{result?.name}}</span>
+                        </div>
+
+                        <p class="text-center">
+                            {{result?.address}}, {{result?.state}}, {{result?.city}}, {{result?.zipCode__zipCode}}
+                        </p>
+                    </a>
+                </div>
+
+                <div *ngIf="searchResultList && searchResultList.length > 0 && totalPages > 1">
+                    <mat-paginator [length]="totalRow" [pageSize]="20" [pageSizeOptions]="[15, 30, 60, 90, 120]" (page)="handlePage($event)">
+                    </mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

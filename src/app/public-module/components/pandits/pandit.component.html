@@ -1,0 +1,354 @@
+<div class="pandit-page-container">
+    <div class="pandit">
+        <div class="header">
+            <h1>Samskara</h1>
+
+            <ul>
+                <li>
+                    <a class="pointer-event active">Home </a>
+                </li>
+
+                <li>
+                    <a class="active">
+            <i class="fa fa-angle-double-right"></i>
+          </a>
+                </li>
+
+                <li>
+                    <a>Pandit</a>
+                </li>
+            </ul>
+        </div>
+
+        <p>
+            A Pandit/ Purohit/ Pujari is a person with profound knowledge in performing pujas and rituals in temples. He is responsible for carrying out the rituals and pujas on special occasions and ceremonies. A Pandit is usually well versed in Upanishads, Vedas
+            and Epics and thus preaches about its importance.
+        </p>
+
+        <p>
+            According to Hindu tradition, people take advice from Pandit or Purohit about the right time and day to establish a new venture or for conducting a special ceremony. Pandits are usually invited for performing Ganpathi puja, Naming Ceremony, Saraswati
+            puja and many more. Pandits chant mantras while doing pujas. They wear a rudraksh garland or hold it for chanting mantras. Pandits have the rights to perform pujas in temples. Only a pandit is allowed to enter the sacred sanctum of the idolized
+            deity. They act as the main official and the caretaker of the temple. A pandit has an honourable position in the society.
+        </p>
+
+        <p class="primary-color">
+            Don’t hesitate to choose a pandit for your next puja - renowned pandits are ready to perform pujas. Book now without a second thought.
+        </p>
+
+        <div class="row" *ngIf="false">
+            <div class="col-md-12 PL-0">
+                <div class="search-result-list">
+                    <a class="search-result-list--section" *ngFor="let pandit of panditList; let i = index" (click)="panditDetails(pandit)">
+                        <div class="image-section">
+                            <img [src]="
+                  pandit?.profile_image
+                    ? pandit?.profile_image
+                    : 'assets/img/user_placeholder.png'
+                " />
+                        </div>
+                        <div class="text-center">
+                            <span class="mandir-name">{{ pandit?.firstName }} {{ pandit?.lastName }}</span
+              >
+            </div>
+
+            <div class="ratings">
+              <div *ngIf="pandit?.rating">
+                <mat-icon
+                  *ngFor="let item of onGetArray(pandit?.rating)"
+                  svgIcon="star"
+                ></mat-icon>
+              </div>
+            </div>
+
+            <div class="social-icons">
+              <ul>
+                <li *ngIf="pandit?.facebook">
+                  <a target="_blank" [href]="pandit?.facebook">
+                    <mat-icon svgIcon="facebook"></mat-icon>
+                  </a>
+                </li>
+
+                <li *ngIf="pandit?.linkedin">
+                  <a target="_blank" [href]="pandit?.linkedin">
+                    <mat-icon svgIcon="linkedin"></mat-icon>
+                  </a>
+                </li>
+
+                <li *ngIf="pandit?.instagram">
+                  <a target="_blank" [href]="pandit?.instagram">
+                    <mat-icon svgIcon="instagram"></mat-icon>
+                  </a>
+                </li>
+
+                <li *ngIf="pandit?.pinterest">
+                  <a target="_blank" [href]="pandit?.pinterest">
+                    <mat-icon svgIcon="pinterest"></mat-icon>
+                  </a>
+                </li>
+
+                <li *ngIf="pandit?.emailAddress">
+                  <a target="_blank" [href]="'mailto:' + pandit?.emailAddress">
+                    <mat-icon svgIcon="mail"></mat-icon>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="view-profile-button">
+              <button type="button" (click)="panditDetails(pandit)">
+                View Detail
+              </button>
+            </div>
+          </a>
+        </div>
+
+        <div class="row" *ngIf="false">
+          <div class="col-md-12" *ngIf="panditList && panditList[0] === null">
+            Pandit not found
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="samskara-container">
+  <h2>Samskara</h2>
+  <div>
+    <p class="text-center">
+      Hinduism delineates the concept of life through Samskaar with some
+      significant obligations. Samskar is the sequence of phases in which a
+      person has to lead in life. Samskaars are the sacraments of life which
+      lead man in the path of righteousness. They are the events of life to be
+      celebrated with spiritual essence. There are sixteen Samskaars defined in
+      Hinduism. They are:
+    </p>
+
+    <div class="samskara">
+      <div class="samskara__section">
+        <div class="samskara__section--left">
+          <img src="assets/img/samskar/Garbhadhana.png" alt="" />
+        </div>
+
+        <div class="samskara__section--right">
+          <h2>Garbhadhana</h2>
+          <p>
+            Garbhadhana is the conception ritual for having healthy children.
+            Lord Brahma or Prajapati is appeased by this ritual.
+          </p>
+          <span>1</span>
+                        </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <h2>Punswana</h2>
+                        <p>
+                            Punswana is the fertilization ritual performed on the third month of pregnancy asking for life and safety of the fetus. Once again Lord Brahma is prayed to in this ceremony.
+                        </p>
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <img src="assets/img/samskar/Punswana.png" alt="" />
+                        <span>2</span>
+                    </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <img src="assets/img/samskar/Seemantonnayana.png" alt="" />
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <h2>Seemantonnayana</h2>
+                        <p>
+                            Seemantonnayana ritual is observed in the penultimate month of pregnancy for safe and assured delivery of the baby. This is a prayer to the Hindu God Dhata.
+                        </p>
+                        <span>3</span>
+                    </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <h2>Jatkarma</h2>
+                        <p>
+                            is ​a birth ceremony of the new-born baby. On this occasion, a prayer is observed for goddess Savita.
+                        </p>
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <img src="assets/img/samskar/Jatkarma.png" alt="" />
+                        <span>4</span>
+                    </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <img src="assets/img/samskar/Namkarana.png" alt="" />
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <h2>Namkarana</h2>
+                        <p>
+                            Namkarana is the naming ceremony of the baby, which is observed 11 days after its birth. This gives the new-born an identity with which he or she will be associated all his life.
+                        </p>
+                        <span>5</span>
+                    </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <h2>Niskramana</h2>
+                        <p>
+                            Niskramana is the act of taking the four-month-old child out for the first time into the open to sunbathe. The Sun God Surya is worshiped.
+                        </p>
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <img src="assets/img/samskar/Niskramana.png" alt="" />
+                        <span>6</span>
+                    </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <img src="assets/img/samskar/Annaprashana.png" alt="" />
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <h2>Annaprashana</h2>
+                        <p>
+                            Annaprashana is the elaborate ceremony conducted when the child is fed cereal for the first time at the age of six months.
+                        </p>
+                        <span>7</span>
+                    </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <h2>Chudakarma or Keshanta karma</h2>
+                        <p>
+                            Chudakarma or Keshanta karma is the ceremonious tonsuring of the head and Lord Brahma or Prajapati is prayed and offerings made to him. The baby's head is shaved off and the hair is ceremonially immersed in the river.
+                        </p>
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <img src="assets/img/samskar/Chudakarma-or-Keshanta-karma.png" alt="" />
+                        <span>8</span>
+                    </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <img src="assets/img/samskar/Karnavedha.png" alt="" />
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <h2>Karnavedha</h2>
+                        <p>
+                            Karnavedha is the ritual of having the ear pierced. These days it is mostly girls who have their ears pierced.
+                        </p>
+                        <span>9</span>
+                    </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <h2>Upanayana</h2>
+                        <p>
+                            Upanayana aka thread ceremony is the investiture ceremony of the sacred thread where Brahmin boys are adorned with a sacred thread hung from one shoulder and passed around their front and back. This day, Lord Indra is invoked and offerings are made to
+                            him.
+                        </p>
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <img src="assets/img/samskar/Upanayana.png" alt="" />
+                        <span>10</span>
+                    </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <img src="assets/img/samskar/Vedarambha-or-Vidyarambha.png" alt="" />
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <h2>Vedarambha or Vidyarambha</h2>
+                        <p>
+                            Vedarambha or Vidyarambha is observed when the child is initiated into study. In ancient times, boys were sent to live with their gurus in a 'gurugriha' or hermitage to study. Devotees pray to the Hindu God Apawaka on this occasion.
+                        </p>
+                        <span>11</span>
+                    </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <h2>Samavartana</h2>
+                        <p>
+                            Samavartana is the convocation or the commencement to the study of the Vedas.
+                        </p>
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <img src="assets/img/samskar/Samavartana.png" alt="" />
+                        <span>12</span>
+                    </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <img src="assets/img/samskar/Vivaha.png" alt="" />
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <h2>Vivaha</h2>
+                        <p>
+                            Vivaha is the lavish nuptial ceremony. After marriage, the individual enters the life of a 'grihastha' or conjugal life - the life of a householder. Lord Brahma is the deity of the day in the wedding ceremony.
+                        </p>
+                        <span>13</span>
+                    </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <h2>Awasthyadhana or Vivahagni Parigraha</h2>
+                        <p>
+                            Awasthyadhana or Vivahagni Parigraha is a ceremony where the marrying couple encircles the sacred fire seven times. It is also known as 'Saptapadi.'
+                        </p>
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <img src="assets/img/samskar/Awasthyadhana-or-Vivahagni-Parigraha.png" alt="" />
+                        <span>14</span>
+                    </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <img src="assets/img/samskar/Tretagnisangraha.png" alt="" />
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <h2>Tretagnisangraha</h2>
+                        <p>
+                            Tretagnisangraha is the auspicious ritual that starts the couple on their domestic life.
+                        </p>
+                        <span>15</span>
+                    </div>
+                </div>
+
+                <div class="samskara__section">
+                    <div class="samskara__section--left">
+                        <h2>Antyeshti</h2>
+                        <p>
+                            Antyeshti is the final rite of passage or Hindu funeral rite that is performed after death.
+                        </p>
+                    </div>
+
+                    <div class="samskara__section--right">
+                        <img src="assets/img/samskar/Antyeshti.png" alt="" />
+                        <span>16</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

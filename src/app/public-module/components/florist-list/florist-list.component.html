@@ -1,0 +1,49 @@
+<div class="florist-page-container">
+    <div class="florist">
+        <div class="header">
+            <h1>Florist</h1>
+
+            <ul>
+                <li>
+                    <a class="pointer-event active">Home </a>
+                </li>
+
+                <li>
+                    <a class="active">
+            <i class="fa fa-angle-double-right"></i>
+          </a>
+                </li>
+
+                <li>
+                    <a>Florist</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 PL-0">
+                <div class="search-result-list">
+                    <a class="search-result-list--section" *ngFor="let item of floristList; let i = index" (click)="onFloristDetailsView(item?.id)">
+                        <div class="image-section">
+                            <img [src]="item?.logo ? item?.logo : 'assets/img/placeholder/florist-placeholder.jpeg'" />
+                        </div>
+
+                        <div class="text-center">
+                            <span class="mandir-name">{{item?.name}}</span>
+                        </div>
+
+                        <div>
+                            <p>{{item?.description}}</p>
+                        </div>
+
+                        <div class="view-profile-button">
+                            <button type="button" (click)="onFloristDetailsView(item)">
+                View Detail
+              </button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

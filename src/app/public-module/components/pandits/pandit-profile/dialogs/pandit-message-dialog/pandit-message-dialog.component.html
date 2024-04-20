@@ -1,0 +1,32 @@
+<div class="agcy-client-chat-container">
+    <div class="client">
+        <h2>User Messages</h2>
+
+        <div class="client-chat">
+            <div class="client-chat__section" *ngFor="let item of [0, 1, 2, 3, 4, 5, 6]; let i = index">
+                <div class="client-chat__section--left">
+                    <div class="user-icon">
+                        <img src="assets/img/user_placeholder.png" alt="" />
+                        <div class="message-date">19:16</div>
+                    </div>
+
+                    <div class="user-details" *ngIf="i !== 0">
+                        <h2 class="user-name">Hasmukh</h2>
+                        <!-- <p class="user-content">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s.
+            </p> -->
+                    </div>
+
+                    <div class="user-details" *ngIf="i === 0">
+                        <h2 class="user-name">Hasmukh</h2>
+                        <p class="user-content">
+                            <img src="assets/img/user_placeholder.png" />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

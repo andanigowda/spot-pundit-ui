@@ -1,0 +1,26 @@
+<div class="blog-page-container">
+    <div class="blog-page">
+        <div class="header">
+            <h1>Blogs</h1>
+        </div>
+
+        <p>
+            Hinduism is a diverse religion with 33 million gods. It encompasses many different religious texts, scriptures and traditions. People around the world practice Hinduism differently. At FP, we aim to educate you all about the various gods, traditions and
+            beliefs. Read on a variety of topics on Hinduism below.
+        </p>
+
+        <div class="blog-page__section">
+            <div class="blog-page__section__box" *ngFor="let item of blogList" (click)="onOpenBlogsDetails(item)">
+                <img [src]="item?.featured_image ? item?.featured_image : 'assets/img/bg1.jpg'" alt="" />
+                <h2>{{ item?.name }}</h2>
+                <!-- <p [innerHTML]="onDescription(item?.description)"></p> -->
+                <a (click)="onOpenBlogsDetails(item?.endUrl)">Read More...</a>
+            </div>
+        </div>
+
+        <div *ngIf="blogList && blogList.length > 0">
+            <mat-paginator [length]="totalRecords" [pageSizeOptions]="[10]" (page)="onPaginationChange($event)">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="contact-us-page-container">
+    <form [formGroup]="contactsForm" (submit)="onSubmitContactsForm(contactsForm)">
+        <h4>Get In Touch</h4>
+        <div class="contact-us-page">
+            <div class="row" *ngIf="false">
+                <div class="col-md-12 text-center">
+                    <h3>Find a Pandit team is here to help</h3>
+                    <h4>
+                        Please submit your information to be contacted by a member of our find a pandit Team.
+                    </h4>
+                </div>
+            </div>
+
+            <div class="row white-box">
+                <div class="col-md-6">
+                    <label>First Name</label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="first_name" matInput placeholder="Enter first name" required />
+                        <mat-error *ngIf="requiredValidation(formControls['first_name'])">First name is required.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-6">
+                    <label>Last Name</label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="last_name" matInput placeholder="Enter last name" required />
+                        <mat-error *ngIf="requiredValidation(formControls['last_name'])">Last name is required.</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-6 MT-10">
+                    <label>Email</label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="email" matInput placeholder="Enter email" required />
+                        <mat-error *ngIf="requiredValidation(formControls['email'])">Email is required</mat-error>
+                        <mat-error *ngIf="patternValidation(formControls['email'])">Enter valid email address</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-6 MT-10">
+                    <label>Phone Number</label>
+                    <mat-form-field appearance="outline">
+                        <input type="text" formControlName="phone_number" matInput placeholder="Enter phone number" required />
+                        <mat-error *ngIf="requiredValidation(formControls['phone_number'])">Phone number is required</mat-error>
+                        <mat-error *ngIf="patternValidation(formControls['phone_number'])">Enter valid phone number</mat-error>
+                        <mat-error *ngIf="lengthValidation(formControls['phone_number'])">Phone number should be 9 to 14 digits</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="col-md-12 MT-10">
+                    <label>Please describe what you need help with: (200 char max)</label>
+                    <mat-form-field appearance="outline">
+                        <textarea rows="5" formControlName="query" matInput placeholder="Enter description"></textarea>
+                        <mat-error *ngIf="lengthValidation(formControls['query'])">Description length should be 1 to 200 characters.</mat-error>
+                    </mat-form-field>
+                    <p>
+                        By clicking the "SUBMIT" button below, you agree to the
+                        <a target="_blank" href="assets/documents/termsofUse.pdf">Terms and Conditions</a> and
+                        <a target="_blank" href="assets/documents/privacyPolicy.pdf">Privacy Policy</a>
+                    </p>
+                </div>
+
+                <!-- <div class="col-md-6 MT-10">
+          <ngx-recaptcha2 #captchaElem [siteKey]="'6LfElt0ZAAAAAJiJR89ZjJkwjF5RyzN2ethHZCAT'" [useGlobalDomain]="false">
+          </ngx-recaptcha2>
+        </div> -->
+
+                <div class="col-md-12 MB-10 text-center">
+                    <button type="submit" mat-raised-button class="black-btn" [disabled]="!contactsForm.valid" color="primary">
+            SUBMIT
+          </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

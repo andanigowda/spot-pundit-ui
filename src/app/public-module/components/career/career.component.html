@@ -1,0 +1,75 @@
+<div class="user-login-container">
+    <form [formGroup]="careerForm" (submit)="onCareerLoginSubmit(careerForm)">
+        <h3>Join Our Team</h3>
+
+        <div class="row white-box">
+            <div class="col-md-6">
+                <label>First Name</label>
+                <mat-form-field appearance="outline">
+                    <input type="text" formControlName="first_name" matInput placeholder="Enter First Name" required />
+                    <mat-error *ngIf="
+              formControls['first_name'].touched &&
+              formControls['first_name'].hasError('required')
+            ">
+                        First name is required.</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <label>Last Name</label>
+                <mat-form-field appearance="outline">
+                    <input type="text" formControlName="last_name" matInput placeholder="Enter Last Name" required />
+                    <mat-error *ngIf="
+              formControls['last_name'].touched &&
+              formControls['last_name'].hasError('required')
+            ">
+                        Last name is required.</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <label>Email Address</label>
+                <mat-form-field appearance="outline">
+                    <input type="text" formControlName="email" matInput placeholder="Enter Email Address" required />
+                    <mat-error *ngIf="requiredValidation(formControls['email'])">Email is required</mat-error>
+                    <mat-error *ngIf="patternValidation(formControls['email'])">Enter valid email address</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <label>Phone No.</label>
+                <mat-form-field appearance="outline">
+                    <input type="text" formControlName="phone_number" matInput placeholder="Enter phone number" required />
+                    <mat-error *ngIf="requiredValidation(formControls['phone_number'])">Phone number is required</mat-error>
+                    <mat-error *ngIf="patternValidation(formControls['phone_number'])">Enter valid phone number</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-12">
+                <label>Please share why would you like to join <span>Find A Pandit.</span></label>
+
+                <mat-form-field appearance="outline">
+                    <textarea type="text" formControlName="message" matInput placeholder="Enter Message" required></textarea>
+                    <mat-error *ngIf="
+              formControls['message'].touched &&
+              formControls['message'].hasError('required')
+            ">
+                        Message is required.</mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col-md-6">
+                <label>Resume</label>
+                <div>
+                    <input type="file" accept=".pdf" (change)="onUploadIdProof($event)" placeholder="choose file" />
+                </div>
+            </div>
+
+            <div class="col-md-12 MB-10 text-center">
+                <button type="submit" mat-raised-button class="black-btn" color="primary">
+          SUBMIT
+        </button>
+            </div>
+        </div>
+    </form>
+</div>

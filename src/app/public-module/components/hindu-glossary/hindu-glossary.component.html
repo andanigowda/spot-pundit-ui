@@ -1,0 +1,34 @@
+<div class="hindu-glossary-container">
+    <div class="header">
+        <h1>Hindu Glossary</h1>
+    </div>
+
+    <div class="hindu-glossary-header">
+        <div class="hindu-glossary-header--label">
+            <label>Search by Tag:</label>
+        </div>
+
+        <div class="hindu-glossary-header--hyperlink">
+            <a *ngFor="let item of filterList; let i = index" (click)="onChangeData(item, i)" [ngClass]="{'active': selectedIndex === i}">{{ item.toUpperCase() }}</a>
+        </div>
+    </div>
+
+    <table>
+        <tbody *ngIf="filteredDataList && filteredDataList.length > 0">
+            <tr *ngFor="let data of filteredDataList">
+                <th>{{ data?.title }}</th>
+                <td>
+                    {{ data?.description }}
+                </td>
+            </tr>
+        </tbody>
+
+        <tbody *ngIf="filteredDataList && filteredDataList.length === 0">
+            <tr>
+                <th colspan="2" class="text-center not-result-found">
+                    <img src="assets/img/no-results.png" alt="">
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>

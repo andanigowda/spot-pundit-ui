@@ -1,0 +1,39 @@
+<div class="langing-testimonial-container">
+    <h3>What Our Client Say</h3>
+    <h2>Testimonials</h2>
+
+    <div>
+        <div class="swiper-container" [swiper]="config">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let item of [0, 1, 2, 3, 4]; let i = index">
+                    <div class="content">
+                        <div class="ratings">
+                            <mat-icon svgIcon="testimonial-star"></mat-icon>
+                            <mat-icon svgIcon="testimonial-star"></mat-icon>
+                            <mat-icon svgIcon="testimonial-star"></mat-icon>
+                            <mat-icon svgIcon="testimonial-star"></mat-icon>
+                            <mat-icon svgIcon="testimonial-star1"></mat-icon>
+                        </div>
+
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has
+                            survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                        </p>
+                    </div>
+
+                    <img [src]="
+              'assets/img/testimonials/testimonials-img' + (i + 1) + '.png'
+            " alt="" />
+                    <h2>Vijay</h2>
+                    <h3>from India</h3>
+                </div>
+            </div>
+
+            <div class="swiper-scrollbar"></div>
+            <div class="swiper-pagination"></div>
+
+            <!-- <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div> -->
+        </div>
+    </div>
+</div>

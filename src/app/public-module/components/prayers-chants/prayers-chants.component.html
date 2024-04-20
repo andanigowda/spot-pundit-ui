@@ -1,0 +1,34 @@
+<div class="puja-recipes-page-container">
+    <div class="puja-recipes-page">
+        <!-- Puja recipes header -->
+        <div class="header">
+            <h1>Prayers/Chants</h1>
+        </div>
+
+        <!-- Pooja receipes -->
+        <div class="puja-recipes-page__content">
+            <div class="puja-recipes-page__content--side-menu">
+                <ul>
+                    <li *ngFor="let item of prayerList; let i = index">
+                        <a [ngClass]="{'active':  selectedPrayer.counter === i+1}" (click)="onOpenPrayersDetails(item)">{{ item?.name }}</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="puja-recipes-page__content--body">
+                <div>
+                    <img [src]="selectedPrayer?.featured_image" alt="">
+                </div>
+
+                <div>
+                    <h3>{{selectedPrayer?.name}}</h3>
+                </div>
+
+                <div>
+                    <p [innerHTML]="selectedPrayer?.description"></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

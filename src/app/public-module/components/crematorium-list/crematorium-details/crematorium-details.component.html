@@ -1,0 +1,161 @@
+<div class="god-details-container">
+    <div class="header">
+        <h1>Crematoriums Details</h1>
+
+    </div>
+
+    <div class="god-details">
+        <div class="back-to-list">
+            <a (click)="backToList()"><i class="fa fa-angle-double-left"></i> Back</a>
+        </div>
+        <div>
+            <div class="god-content">
+                <div class="image-section">
+                    <img [src]="crematoriumDetails?.logo ? crematoriumDetails?.logo : 'assets/img/placeholder/crematorium-placeholder.jpeg'" />
+                </div>
+
+                <div class="god-content--body">
+                    <div class="row">
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.name">
+                            <label>Crematorium Name:</label>
+                            <span>{{crematoriumDetails?.name}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.mobileNumber">
+                            <label>Mobile Number:</label>
+                            <span>{{crematoriumDetails?.mobileNumber}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.website">
+                            <label>Website:</label>
+                            <span>{{crematoriumDetails?.website}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.email">
+                            <label>Email:</label>
+                            <span>{{crematoriumDetails?.email}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.address">
+                            <label>Street Address:</label>
+                            <span>{{crematoriumDetails?.address}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.country">
+                            <label>Country:</label>
+                            <span>{{crematoriumDetails?.country}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.state">
+                            <label>State:</label>
+                            <span>{{crematoriumDetails?.state}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.city">
+                            <label>City:</label>
+                            <span>{{crematoriumDetails?.city}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.zipCode">
+                            <label>Zipcode:</label>
+                            <span>{{crematoriumDetails?.zipCode}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.description">
+                            <label>Description:</label>
+                            <span>{{crematoriumDetails?.description}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.star_rating">
+                            <label>Ratings:</label>
+                            <span class="ratings" *ngIf="crematoriumDetails?.star_rating">
+                <mat-icon *ngFor="let item of onGetArray(crematoriumDetails?.star_rating)" svgIcon="star"></mat-icon>
+              </span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.message">
+                            <label>Message:</label>
+                            <span>{{crematoriumDetails?.message}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.master_image">
+                            <label>Master Image:</label>
+                            <span>
+                <img *ngIf="crematoriumDetails?.master_image" [src]="crematoriumDetails?.master_image" width="100" />
+              </span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.image_1 || crematoriumDetails?.image_2 || crematoriumDetails?.image_3 || crematoriumDetails?.image_4">
+                            <label>Image Gallery</label>
+                            <span>
+                <img *ngIf="crematoriumDetails?.image_1" [src]="crematoriumDetails?.image_1"
+                  (click)="onOpenImageDialog(crematoriumDetails?.image_1)" width="100" />
+                <img *ngIf="crematoriumDetails?.image_2" [src]="crematoriumDetails?.image_2"
+                  (click)="onOpenImageDialog(crematoriumDetails?.image_2)" width="100" />
+                <img *ngIf="crematoriumDetails?.image_3" [src]="crematoriumDetails?.image_3"
+                  (click)="onOpenImageDialog(crematoriumDetails?.image_3)" width="100" />
+                <img *ngIf="crematoriumDetails?.image_4" [src]="crematoriumDetails?.image_4"
+                  (click)="onOpenImageDialog(crematoriumDetails?.image_4)" width="100" />
+              </span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.facebook">
+                            <label>Facebook:</label>
+                            <span>
+                <a *ngIf="crematoriumDetails?.facebook" [href]="crematoriumDetails?.facebook"
+                  target="_blank">{{crematoriumDetails?.facebook}}</a>
+              </span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.instagram">
+                            <label>Instagram:</label>
+                            <span>
+                <a *ngIf="crematoriumDetails?.instagram" [href]="crematoriumDetails?.instagram"
+                  target="_blank">{{crematoriumDetails?.instagram}}</a>
+              </span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.video_1 || crematoriumDetails?.video_2">
+                            <label>Video Gallery</label>
+                            <span>
+                <video controls width="250" class="MR-10">
+
+                  <source type="video/mp4" [src]="crematoriumDetails?.video_1">
+
+
+                  Sorry, your browser doesn't support embedded videos.
+                </video>
+                <video controls width="250">
+
+                  <source type="video/mp4" [src]="crematoriumDetails?.video_2">
+
+
+                  Sorry, your browser doesn't support embedded videos.
+                </video>
+              </span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.temple">
+                            <label>Temple:</label>
+                            <span>
+                {{crematoriumDetails?.temple}}
+              </span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="crematoriumDetails?.list_of_services">
+                            <label>List of service:</label>
+                            <span>
+                {{crematoriumDetails?.list_of_services}}
+              </span>
+                        </div>
+
+                        <div class="col-md-12 PR-0" *ngIf="crematoriumDetails?.address">
+                            <iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen [src]="addressRender(crematoriumDetails)">
+              </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

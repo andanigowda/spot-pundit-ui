@@ -1,0 +1,21 @@
+<div class="calendar-view-container">
+    <div class="calendar-section">
+        <div class="calendar-view" *ngFor="let calendar of calendarList; let i = index">
+            <div class="calendar-view__right">
+                <span></span>
+                <div class="calendar-view__right--fetival" *ngFor="let item of calendar['right']">
+                    <h2>{{ item?.date }}</h2>
+                    <h6>{{ item?.festival }}</h6>
+                </div>
+            </div>
+
+            <div class="calendar-view__left">
+                <span></span>
+                <div class="calendar-view__left--fetival" *ngFor="let item of calendar['left']">
+                    <h2>{{ item?.date }}</h2>
+                    <h6>{{ item?.festival }}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

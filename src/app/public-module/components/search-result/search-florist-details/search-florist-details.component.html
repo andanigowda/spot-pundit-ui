@@ -1,0 +1,81 @@
+<div class="god-details-container">
+    <div class="header">
+        <h1>Florist Details</h1>
+    </div>
+
+    <div class="god-details">
+        <div>
+            <div class="god-content">
+                <div class="image-section">
+                    <img [src]="floristDetails?.logo ? floristDetails?.logo : 'assets/img/placeholder/florist-placeholder.jpeg'" />
+                </div>
+
+                <div class="god-content--body">
+                    <div class="row">
+                        <div class="col-md-12" *ngIf="floristDetails?.name">
+                            <label>Name:</label>
+                            <span>{{floristDetails?.name}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="floristDetails?.mobileNumber">
+                            <label>Mobile Number:</label>
+                            <span>{{floristDetails?.mobileNumber}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="floristDetails?.website">
+                            <label>Website:</label>
+                            <span>{{floristDetails?.website}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="floristDetails?.address">
+                            <label>Address:</label>
+                            <span>{{floristDetails?.address}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="floristDetails?.state">
+                            <label>State:</label>
+                            <span>{{floristDetails?.state}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="floristDetails?.city">
+                            <label>City:</label>
+                            <span>{{floristDetails?.city}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="floristDetails?.zipCode">
+                            <label>Zipcode:</label>
+                            <span>{{floristDetails?.zipCode}}</span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="floristDetails?.image_1 || floristDetails?.image_2 || floristDetails?.image_3 || floristDetails?.image_4">
+                            <label>Image Gallery:</label>
+                            <span>
+                <img *ngIf="floristDetails?.image_1" src="floristDetails?.image_1" (click)="onOpenImageDialog(floristDetails?.image_1)" width="100" />
+                <img *ngIf="floristDetails?.image_2" src="floristDetails?.image_2" (click)="onOpenImageDialog(floristDetails?.image_2)" width="100" />
+                <img *ngIf="floristDetails?.image_3" src="floristDetails?.image_3" (click)="onOpenImageDialog(floristDetails?.image_3)" width="100" />
+                <img *ngIf="floristDetails?.image_4" src="floristDetails?.image_4" (click)="onOpenImageDialog(floristDetails?.image_4)" width="100" />
+              </span>
+                        </div>
+
+                        <div class="col-md-12" *ngIf="floristDetails?.video_1 || floristDetails?.video_2 ">
+                            <label>Video Gallery:</label>
+                            <span>
+                <video controls width="250" class="MR-10">
+                  <source type="video/mp4" [src]="floristDetails?.video_1">
+                 </video>
+                 <video controls width="250">
+                  <source type="video/mp4" [src]="floristDetails?.video_2">
+                 </video>
+              </span>
+                        </div>
+
+                        <div class="col-md-12 PR-0" *ngIf="floristDetails?.address">
+                            <iframe width="100%" height="450" style="border:0" loading="lazy" allowfullscreen [src]="addressRender(floristDetails)">
+              </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

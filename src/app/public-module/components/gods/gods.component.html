@@ -1,0 +1,37 @@
+<div class="gods-page-container">
+    <div class="god-page">
+        <div class="header">
+            <h1>Gods</h1>
+
+            <ul>
+                <li>
+                    <a class="pointer-event active">Home </a>
+                </li>
+
+                <li>
+                    <a class="active">
+            <i class="fa fa-angle-double-right"></i>
+          </a>
+                </li>
+
+                <li>
+                    <a>Gods</a>
+                </li>
+            </ul>
+        </div>
+
+        <p>
+            Hinduism is known to have 33 million Gods, which makes it a polytheistic religion. The three preeminent Gods portrayed as ‘trinity’ are Brahma (The creator), Vishnu (The protector) and Shiva (The destroyer). Learn about some of the predominant Gods worshipped
+            by Hindus
+        </p>
+
+        <div class="god-page__section">
+            <div class="god-page__section__box" *ngFor="let item of godList" (click)="onOpenGodDetails(item?.endUrl)">
+                <img *ngIf="item?.image" [src]="'assets/img/gods/' + item?.image" />
+                <h2>{{ item?.title }}</h2>
+                <p>{{ item?.paragraph }}</p>
+                <a (click)="onOpenGodDetails(item?.endUrl)">Read More...</a>
+            </div>
+        </div>
+    </div>
+</div>

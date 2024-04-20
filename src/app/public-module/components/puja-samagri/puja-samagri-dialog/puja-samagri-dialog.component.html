@@ -1,0 +1,24 @@
+<div class="row">
+    <h2 class="col-md-12 text-center" mat-dialog-title>{{ data?.title }}</h2>
+</div>
+<mat-dialog-content class="mat-typography">
+    <div class="row">
+        <div class="col-md-4 text-center MR-10">
+            <div class="image-section" *ngIf="data?.image">
+                <img [src]="'assets/img/puja-samgri/' + data?.image" alt="" />
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <p [innerHTML]="data?.description"></p>
+        </div>
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+    <div class="row">
+        <div class="col-md-12">
+            <button mat-raised-button color="primary" mat-dialog-close>Close</button>
+        </div>
+    </div>
+</mat-dialog-actions>
